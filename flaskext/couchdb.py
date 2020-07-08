@@ -50,8 +50,7 @@ class CouchDBManager(object):
         This iterates through all the view definitions registered generally
         and the ones on specific document classes.
         """
-        return itertools.chain(self.general_viewdefs,
-                               *self.dc_viewdefs.itervalues())
+        return itertools.chain(self.general_viewdefs, *self.dc_viewdefs.values())
 
     def add_document(self, dc):
         """
