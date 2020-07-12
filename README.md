@@ -39,7 +39,7 @@ By default the application runs on port 5000
 
 - api/v1/userprofile    : Accepts ['GET', 'POST]
     * This endpoint is used to create a userprofile and list all the user profiles available
-    * Note: For a `GET` request, create a userprofile design document and a view named `all`; Add the map function as below
+    * Note: For a `GET` request, create a `userprofile` design document and a view named `all`; Add the map function as below
     ```
     function (doc) {
         emit(doc.username, doc);
