@@ -1,4 +1,6 @@
-from flaskext.couchdb import Document, Mapping, TextField, IntegerField, BooleanField, DateTimeField, FloatField, DictField, ListField
+from flaskext.couchdb import (
+    Document, Mapping, TextField, IntegerField, BooleanField, DateTimeField, FloatField, DictField, ListField, ViewField
+)
 from datetime import datetime
 
 class UserProfile(Document):
@@ -18,17 +20,24 @@ class UserProfile(Document):
     total_user_activities = IntegerField(default=0)
     created_at = DateTimeField(default=datetime.now())
     activities = ListField(DictField(Mapping.build(
-        activity_name = TextField()
-        activity_destination = FloatField(default=0.0)
-        activity_completed = BooleanField(default=False)
-        activity_route_taken = TextField()
-        activity_time_taken = IntegerField(default=0) #Time in minutes
-        activity_total_possible_carbon = FloatField(default=0.0)
-        activity_carbon_used = FloatField(default=0.0)
+        activity_name = TextField(),
+        activity_destination = TextField(),
+        activity_completed = BooleanField(default=False),
+        activity_route_taken = TextField(),
+        activity_time_taken = IntegerField(default=0), #Time in minutes
+        activity_total_possible_carbon = FloatField(default=0.0),
+        activity_carbon_used = FloatField(default=0.0),
         activity_reward_points = FloatField(default=0.0)
     )))
     points = ListField(DictField(Mapping.build(
-        points = FloatField(default=0.0)
-        redeem_date = DateTimeField()
+        total_points = FloatField(default=0.0),
+        redeem_date = DateTimeField(),
         redeem_item = TextField()
     )))
+    
+    all = ViewField('userprofile', '''
+    function (doc) {
+        if (doc.doc_type == 'userprofile') {
+            emit(doc.username, doc);
+        };
+    }''')
