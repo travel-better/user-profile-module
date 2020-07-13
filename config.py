@@ -23,8 +23,8 @@ class DevConfig(Config):
     Development config class that holds all development configurations
     '''
     DEBUG=True
-    COUCHDB_SERVER='http://localhost:5984/'
-    COUCHDB_DATABASE = 'travelbetter'
+    COUCHDB_SERVER=os.environ.get('COUCHB_SERVER')
+    COUCHDB_DATABASE=os.environ.get('COUCHB_DATABASE')
 
 
 config_options = {

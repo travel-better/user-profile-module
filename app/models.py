@@ -10,7 +10,10 @@ class UserProfile(Document):
 
     doc_type = 'userprofile'
 
-    username = TextField()
+    first_name = TextField()
+    last_name = TextField()
+    address = TextField()
+    email = TextField()
     bio = TextField()
     total_reward_points = FloatField(default=0.0)
     current_redeemable_points = FloatField(default=0.0)
@@ -20,14 +23,14 @@ class UserProfile(Document):
     total_user_activities = IntegerField(default=0)
     created_at = DateTimeField(default=datetime.now())
     activities = ListField(DictField(Mapping.build(
-        activity_name = TextField(),
-        activity_destination = TextField(),
-        activity_completed = BooleanField(default=False),
-        activity_route_taken = TextField(),
-        activity_time_taken = IntegerField(default=0), #Time in minutes
+        activity_name = TextField(),        
+        activity_type = TextField(),
+        activity_start_date = DateTimeField()
+        activity_end_date = DateTimeField()
         activity_total_possible_carbon = FloatField(default=0.0),
-        activity_carbon_used = FloatField(default=0.0),
+        activity_carbon_reduced = FloatField(default=0.0),
         activity_reward_points = FloatField(default=0.0)
+        isRewardRedeemed = BooleanField(default=False),
     )))
     points = ListField(DictField(Mapping.build(
         total_points = FloatField(default=0.0),

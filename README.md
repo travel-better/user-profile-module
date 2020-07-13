@@ -53,7 +53,10 @@ By default the application runs on port 5000
 - Sample JSON data
 ```
 {
-    "username": "test",
+    "first_name": "test",
+    "last_name": "user",
+    "address": "address here",
+    "email": "test@test.com",
     "bio": "This is a test bio",
     "total_reward_points": 20.0,
     "current_redeemable_points": 33.5,
@@ -64,19 +67,20 @@ By default the application runs on port 5000
     "activities": [
         {
             "activity_name": "Running",
-            "activity_destination": "Destination",
-            "activity_completed": true,
-            "activity_route_taken": "Route",
-            "activity_time_taken": 40,
+            "activity_type": "type",
+            activity_start_date: "2019-04-23T18:25:43.511Z",
+            activity_end_date: "2020-04-23T18:25:43.511Z",
             "activity_total_possible_carbon": 5000.50,
             "activity_carbon_used": 300.50,
-            "activity_reward_points": 100.20
+            "activity_reward_points": 100.20,
+            isRewardRedeemed: true
         }
     ],
     "points": [
         {
             "total_points": 300.79,
-            "redeem_item": "Clothes"
+            "redeem_item": "Clothes",
+            "redeem_date": "2021-04-23T18:25:43.511Z"
         }
     ]
 }
