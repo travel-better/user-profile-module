@@ -2,6 +2,7 @@ from flask import jsonify, request, g
 from app import UserProfile
 from http import HTTPStatus
 from . import main
+from datetime import datetime
 
 @main.route('/userprofile', methods=['GET', 'POST'])
 def profiles():
@@ -12,7 +13,7 @@ def profiles():
             for profile in profiles.rows:
                 response_data.append(profile.__dict__)
             return jsonify(response_data), HTTPStatus.OK
-        except couchdb.http.ResourceNotFound as e:
+        except Exception as e:
             return jsonify({
                 'message': 'Ensure `all` view is correctly defined in the `userprofile` design document',
                 'error': e.args

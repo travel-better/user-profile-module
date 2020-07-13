@@ -68,20 +68,19 @@ By default the application runs on port 5000
         {
             "activity_name": "Running",
             "activity_type": "type",
-            activity_start_date: "2019-04-23T18:25:43.511Z",
-            activity_end_date: "2020-04-23T18:25:43.511Z",
+            "activity_time_taken": "40.0",
             "activity_total_possible_carbon": 5000.50,
             "activity_carbon_used": 300.50,
             "activity_reward_points": 100.20,
-            isRewardRedeemed: true
+            "isRewardRedeemed": true
         }
     ],
     "points": [
         {
             "total_points": 300.79,
-            "redeem_item": "Clothes",
-            "redeem_date": "2021-04-23T18:25:43.511Z"
+            "redeem_item": "Clothes"        
         }
     ]
 }
+
 ```

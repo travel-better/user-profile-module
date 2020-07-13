@@ -4,7 +4,7 @@ class Config:
     '''
     Parent config class that holds all inheritable configurations
     '''
-    SECRET_KEY=os.environ.get('SECRET_KEY')
+    SECRET_KEY=os.getenv('SECRET_KEY', 'This should be something more random :)')
 
 class ProdConfig(Config):
     '''
@@ -23,8 +23,8 @@ class DevConfig(Config):
     Development config class that holds all development configurations
     '''
     DEBUG=True
-    COUCHDB_SERVER=os.environ.get('COUCHB_SERVER')
-    COUCHDB_DATABASE=os.environ.get('COUCHB_DATABASE')
+    COUCHDB_SERVER=os.getenv("COUCHB_SERVER", "http://localhost:5984/")
+    COUCHDB_DATABASE=os.getenv("COUCHB_DATABASE", "travelbetter")
 
 
 config_options = {

@@ -25,12 +25,13 @@ class UserProfile(Document):
     activities = ListField(DictField(Mapping.build(
         activity_name = TextField(),        
         activity_type = TextField(),
-        activity_start_date = DateTimeField()
-        activity_end_date = DateTimeField()
+        activity_start_date = DateTimeField(),
+        activity_end_date = DateTimeField(),
+        activity_time_taken = FloatField(default=0.0),   # Time in Hours
         activity_total_possible_carbon = FloatField(default=0.0),
         activity_carbon_reduced = FloatField(default=0.0),
-        activity_reward_points = FloatField(default=0.0)
-        isRewardRedeemed = BooleanField(default=False),
+        activity_reward_points = FloatField(default=0.0),
+        isRewardRedeemed = BooleanField(default=False)
     )))
     points = ListField(DictField(Mapping.build(
         total_points = FloatField(default=0.0),
